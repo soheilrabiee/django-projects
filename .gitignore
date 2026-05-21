@@ -1,1 +1,23 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
 .venv
+venv/
+env/
+.env
+
+# Django specific files
+db.sqlite3
+db.sqlite3-journal
+*.log
+local_settings.py
+
+# Environment variables
+.env
+
+# 6. IDE folders
+.vscode/
+.idea/
