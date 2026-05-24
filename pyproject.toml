@@ -1,0 +1,28 @@
+[tool.ruff]                    
+line-length = 120              # Default is 88
+target-version = "py314"       
+
+exclude = [                    
+    ".git",                    
+    ".venv",                   
+    "__pycache__",             
+    "migrations",              # Recommended to exclude
+]
+
+[tool.ruff.format]             
+quote-style = "double"         
+
+[tool.ruff.lint]               
+select = ["E", "F", "I", "B", "W", "UP"]   
+                                            # E = pycodestyle errors
+                                            # F = pyflakes (basic errors)
+                                            # I = isort (import sorting)
+                                            # B = flake8-bugbear (common bugs)
+                                            # W = pycodestyle warnings
+                                            # UP = pyupgrade (modern Python syntax)
+
+ignore = ["E501"]              # Ignore "line too long" errors because of line-length = 120
+
+[tool.djlint]
+max-line-length = 120
+profile = "django"
