@@ -9,10 +9,13 @@ def index(request):
     # Model.Manager.Method => how to retrieve data from the database
     item_list = Item.objects.all()
 
+    # Context dict for the render method
+    context = {"item_list": item_list}
+
     # return HttpResponse(item_list)
 
-    # Render a template for index view
-    return render(request, "myapp/index.html")
+    # Passing the context object to the render method along with the template
+    return render(request, "myapp/index.html", context)
 
 
 # HTTP response can return html as well

@@ -1,11 +1,3 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>This is just a template</h1>
-    </body>
-</html>
+<ul>
+    {% for item in item_list %}<li>{{ item.item_name }} - {{ item.item_price }} - {{ item.item_desc }}</li>{% endfor %}
+</ul>
