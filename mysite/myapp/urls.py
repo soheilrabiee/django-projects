@@ -4,4 +4,9 @@ from . import views
 
 # Best practice is to have a separate urls.py file for each app and then connect it to the main urls.py file of the project
 
-urlpatterns = [path("", views.index), path("item/", views.item)]
+urlpatterns = [
+    path("", views.index),
+    path("item/", views.item),
+    # Catching id value from the dynamic url
+    path("<int:id>/", views.detail),
+]

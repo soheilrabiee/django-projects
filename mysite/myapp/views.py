@@ -18,6 +18,10 @@ def index(request):
     return render(request, "myapp/index.html", context)
 
 
+def detail(request, id):
+    return HttpResponse(f"This is a detail view for id number {id}")
+
+
 # HTTP response can return html as well
 def item(request):
     return HttpResponse("<h1>This is an item view</h1>")
