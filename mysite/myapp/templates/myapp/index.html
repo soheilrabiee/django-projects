@@ -1,33 +1,13 @@
-{% comment %} static path needs to be loaded for the tag to work {% endcomment %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <title>Document</title>
-    </head>
-    <body>
-        <nav class="bg-blue-600 text-white">
-            <div class="flex justify-between px-2 py-4">
-                <a href="" class="font-bold text-2xl">FoodApp</a>
-                <div class="space-x-6">
-                    <a href="">Contact</a>
-                    <a href="">Address</a>
-                    <a href="">About Us</a>
-                </div>
-            </div>
-        </nav>
-        <ul>
-            {% for item in item_list %}
-                <li>
-                    {% comment %} Using dynamic url instead of hard coding it.
-                    (namespace:urlname) {% endcomment %}
-                    <a href=" {% url 'myapp:detail' item.id %} ">{{ item.item_name }} - {{ item.item_price }} - {{
-                    item.item_desc }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% extends "myapp/base.html" %}
+{% block body %}
+    <ul>
+        {% for item in item_list %}
+            <li>
+                {% comment %} Using dynamic url instead of hard coding it.
+                (namespace:urlname) {% endcomment %}
+                <a href=" {% url 'myapp:detail' item.id %} ">{{ item.item_name }} - {{ item.item_price }} - {{
+                item.item_desc }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock body %}
