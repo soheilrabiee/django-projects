@@ -1,14 +1,23 @@
 {% extends "myapp/base.html" %}
 {% block body %}
-    <ul>
+    <div>
         {% for item in item_list %}
-            <li>
-                {% comment %} Using dynamic url instead of hard coding it.
-                (namespace:urlname) {% endcomment %}
-                <a href=" {% url 'myapp:detail' item.id %} ">
-                    <img src="{{ item.item_image }}" alt="" />
-                {{ item.item_name }} - {{ item.item_price }} - {{ item.item_desc }}</a>
-            </li>
+            <div class="m-10 flex w-1/2 mx-auto">
+                <div>
+                    <img class="w-64 rounded-lg" src="{{ item.item_image }}" alt="" />
+                </div>
+                <div class="mx-16">
+                    <div class="font-bold">{{ item.item_name }}</div>
+                    <div>{{ item.item_desc }}</div>
+                    <div class="text-green-700 font-bold">${{ item.item_price }}</div>
+                </div>
+                <div>
+                    <div>
+                        <a class="bg-red-500 text-white font-bold px-4 py-2 rounded-md"
+                           href=" {% url 'myapp:detail' item.id %} ">View Details</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock body %}
