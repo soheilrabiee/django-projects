@@ -19,7 +19,12 @@ def index(request):
 
 
 def detail(request, id):
-    return HttpResponse(f"This is a detail view for id number {id}")
+    item = Item.objects.get(id=id)
+    context = {"item": item}
+
+    # return HttpResponse(f"This is a detail view for id number {item}")
+
+    return render(request, "myapp/detail.html", context)
 
 
 # HTTP response can return html as well

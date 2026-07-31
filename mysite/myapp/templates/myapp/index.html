@@ -1,3 +1,7 @@
 <ul>
-    {% for item in item_list %}<li>{{ item.item_name }} - {{ item.item_price }} - {{ item.item_desc }}</li>{% endfor %}
+    {% for item in item_list %}
+        <li>
+            <a href="/myapp/{{ item.id }}">{{ item.item_name }} - {{ item.item_price }} - {{ item.item_desc }}</a>
+        </li>
+    {% endfor %}
 </ul>
