@@ -4,6 +4,10 @@ from . import views
 
 # Best practice is to have a separate urls.py file for each app and then connect it to the main urls.py file of the project
 
+# Adding a namespace to the myapp's url file so that no conflicts happen in the project between apps
+app_name = "myapp"
+
+
 urlpatterns = [
     path("", views.index, name="index"),
     path("item/", views.item),

@@ -1,8 +1,8 @@
 <ul>
     {% for item in item_list %}
         <li>
-            {% comment %} Using dynamic url instead of hard coding it {% endcomment %}
-            <a href=" {% url 'detail' item.id %} ">{{ item.item_name }} - {{ item.item_price }} - {{ item.item_desc }}</a>
+            {% comment %} Using dynamic url instead of hard coding it. (namespace:urlname) {% endcomment %}
+            <a href=" {% url 'myapp:detail' item.id %} ">{{ item.item_name }} - {{ item.item_price }} - {{ item.item_desc }}</a>
         </li>
     {% endfor %}
 </ul>
