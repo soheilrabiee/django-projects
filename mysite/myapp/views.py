@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render
 
+from .forms import ItemForm
 from .models import Item
 
 
@@ -28,5 +29,12 @@ def detail(request, id):
 
 
 # HTTP response can return html as well
-def item(request):
-    return HttpResponse("<h1>This is an item view</h1>")
+# def item(request):
+#     return HttpResponse("<h1>This is an item view</h1>")
+
+
+def create_item(request):
+    # Create an instance of the form class
+    form = ItemForm()
+    context = {"form": form}
+    return render(request, "myapp/item-form.html", context)
