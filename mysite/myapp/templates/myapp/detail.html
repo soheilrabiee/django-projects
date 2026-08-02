@@ -10,7 +10,8 @@
             <div>{{ item.item_desc }}</div>
             <div>
                 <a class="bg-yellow-500 px-4 py-2 rounded-md font-bold text-white"
-                   href="">Edit</a>
+                   href="{% url "myapp:update_item" item.id %}">Edit</a>
+                {% comment %}Passing the id as an argument alongside the url{% endcomment %}
                 <a class="bg-red-500 px-4 py-2 rounded-md font-bold text-white" href="">Delete</a>
             </div>
         </div>
