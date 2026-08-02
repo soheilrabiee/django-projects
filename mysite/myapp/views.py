@@ -1,5 +1,5 @@
 # from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from .forms import ItemForm
 from .models import Item
@@ -34,7 +34,19 @@ def detail(request, id):
 
 
 def create_item(request):
-    # Create an instance of the form class
-    form = ItemForm()
+    # Instead of having two instances of the form object for GET and POST methods
+    form = ItemForm(request.POST or None)
+
+    if request.method == "POST":
+        # form = ItemForm(request.POST)
+        if form.is_valid():
+            # Save the content to the database
+            form.save()
+            return redirect("myapp:index")
+        print("Post request is triggered!")
+
+    ## Views are automatically programmed to handle GET requests so it doesn't need a condition for it
+    ## Create an instance of the form class
+    # form = ItemForm()
     context = {"form": form}
     return render(request, "myapp/item-form.html", context)

@@ -1,6 +1,7 @@
 <form method="post">
     {% comment %} Prevents all the csrf attacks on form {% endcomment %}
     {% csrf_token %}
+    {% comment %} model form should be inside a html form tag  {% endcomment %}
     {{ form }}
     <button type="submit">Save</button>
 </form>
