@@ -60,3 +60,11 @@ def update_item(request, id):
         form.save()
         return redirect("myapp:index")
     return render(request, "myapp/item-form.html", {"form": form})
+
+
+def delete_item(request, id):
+    item = Item.objects.get(id=id)
+    if request.method == "POST":
+        item.delete()
+        return redirect("myapp:index")
+    return render(request, "myapp/item-delete.html")
