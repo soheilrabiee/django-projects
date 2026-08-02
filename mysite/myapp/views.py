@@ -50,3 +50,10 @@ def create_item(request):
     # form = ItemForm()
     context = {"form": form}
     return render(request, "myapp/item-form.html", context)
+
+
+def update_item(request, id):
+    item = Item.objects.get(id=id)
+    # Prepopulate the form with the item values
+    form = ItemForm(instance=item)
+    return render(request, "myapp/item-form.html", {"form": form})

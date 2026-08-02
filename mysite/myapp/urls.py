@@ -13,4 +13,5 @@ urlpatterns = [
     # Catching id value from the dynamic url
     path("<int:id>/", views.detail, name="detail"),
     path("add/", views.create_item, name="create_item"),
+    path("update/<int:id>/", views.update_item, name="update_item"),
 ]
