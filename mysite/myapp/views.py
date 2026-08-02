@@ -55,5 +55,8 @@ def create_item(request):
 def update_item(request, id):
     item = Item.objects.get(id=id)
     # Prepopulate the form with the item values
-    form = ItemForm(instance=item)
+    form = ItemForm(request.POST or None, instance=item)
+    if form.is_valid():
+        form.save()
+        return redirect("myapp:index")
     return render(request, "myapp/item-form.html", {"form": form})
