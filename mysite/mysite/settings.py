@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # Links to the my app config class
     # Necessary to make migrations
     "myapp.apps.MyappConfig",
+    "users.apps.UsersConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
