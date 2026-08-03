@@ -22,4 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # Connecting myapp urls to the project base urls
     path("myapp/", include("myapp.urls")),
+    path("users/", include("users.urls")),
 ]
