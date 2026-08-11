@@ -17,6 +17,12 @@
                 </div>
             </div>
         </nav>
+        {% comment %} Show the messages to the user at the bottom of the navbar {% endcomment %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="bg-green-500 text-green-700">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
         {% block body %}
         {% endblock body %}
     </body>
