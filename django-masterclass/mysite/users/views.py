@@ -1,14 +1,13 @@
 from django.contrib import messages
-
-# Django automatically handles the user creation form and model
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
+
+from .forms import RegisterForm
 
 # Create your views here.
 
 
 def register(request):
-    form = UserCreationForm(request.POST or None)
+    form = RegisterForm(request.POST or None)
 
     if request.method == "POST":
         if form.is_valid():
