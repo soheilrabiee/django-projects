@@ -119,3 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+# New URL when the user logs in
+LOGIN_REDIRECT_URL = "myapp:index"
