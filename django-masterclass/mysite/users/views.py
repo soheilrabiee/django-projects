@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 
 from .forms import RegisterForm
@@ -20,3 +21,9 @@ def register(request):
             return redirect("users:login")
 
     return render(request, "users/register.html", {"form": form})
+
+
+# Logout needs to be a POST request so we can't use it the same way as the login
+def logout_view(request):
+    logout(request)
+    return render(request, "users/logout.html")
