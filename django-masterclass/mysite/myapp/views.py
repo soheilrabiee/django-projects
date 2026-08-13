@@ -1,11 +1,13 @@
 # from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from .forms import ItemForm
 from .models import Item
 
 
-# Create your views here.
+# This view can't be used if the user is not logged in
+@login_required
 def index(request):
     # Model.Manager.Method => how to retrieve data from the database
     item_list = Item.objects.all()

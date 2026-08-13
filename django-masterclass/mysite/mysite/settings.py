@@ -122,3 +122,7 @@ STATIC_URL = "static/"
 
 # New URL when the user logs in
 LOGIN_REDIRECT_URL = "myapp:index"
+
+# If a certain page has login required what URL should django points to
+# So the user can login and then access the page
+LOGIN_URL = "users:login"
