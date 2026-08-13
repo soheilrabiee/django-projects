@@ -4,6 +4,8 @@ from django.urls import path
 
 from . import views
 
+app_name = "users"
+
 urlpatterns = [
     path("register/", views.register, name="register"),
     # The as_view method needs to be called whenever a class based view is used

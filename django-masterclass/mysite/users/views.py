@@ -17,6 +17,6 @@ def register(request):
             # Save a success message for the given request
             # The message survives the redirect
             messages.success(request, f"Welcome {username}, your account has been successfully created")
-            return redirect("myapp:index")
+            return redirect("users:login")
 
     return render(request, "users/register.html", {"form": form})
