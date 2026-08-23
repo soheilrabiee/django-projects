@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -126,3 +127,8 @@ LOGIN_REDIRECT_URL = "myapp:index"
 # If a certain page has login required what URL should django points to
 # So the user can login and then access the page
 LOGIN_URL = "users:login"
+
+# MEDIA_ROOT: the directory where user-uploaded files are physically stored
+MEDIA_ROOT = os.path.join(BASE_DIR, "pictures")
+# MEDIA_URL: the URL prefix used to access uploaded files in the browser
+MEDIA_URL = "/pictures/"
