@@ -1,6 +1,7 @@
 # from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from django.views.generic.list import ListView
 
 from .forms import ItemForm
 from .models import Item
@@ -19,6 +20,13 @@ def index(request):
 
     # Passing the context object to the render method along with the template
     return render(request, "myapp/index.html", context)
+
+
+# Generic listView that retrieves all Item objects and passes them to the template as "item_list"
+class IndexClassView(ListView):
+    model = Item
+    template_name = "myapp/index.html"
+    context_object_name = "item_list"
 
 
 def detail(request, id):

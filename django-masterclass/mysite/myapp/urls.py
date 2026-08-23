@@ -9,7 +9,7 @@ app_name = "myapp"
 
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.IndexClassView.as_view(), name="index"),
     # Catching id value from the dynamic url
     path("<int:id>/", views.detail, name="detail"),
     path("add/", views.create_item, name="create_item"),
