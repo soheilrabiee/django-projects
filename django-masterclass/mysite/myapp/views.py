@@ -2,6 +2,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 from .forms import ItemForm
 from .models import Item
@@ -22,11 +23,12 @@ def index(request):
     return render(request, "myapp/index.html", context)
 
 
-# Generic listView that retrieves all Item objects and passes them to the template as "item_list"
-class IndexClassView(ListView):
-    model = Item
-    template_name = "myapp/index.html"
-    context_object_name = "item_list"
+## Generic listView that retrieves all Item objects and passes them to the template as "item_list"
+
+# class IndexClassView(ListView):
+#     model = Item
+#     template_name = "myapp/index.html"
+#     context_object_name = "item_list"
 
 
 def detail(request, id):
@@ -36,6 +38,13 @@ def detail(request, id):
     # return HttpResponse(f"This is a detail view for id number {item}")
 
     return render(request, "myapp/detail.html", context)
+
+
+## Generic detailView retrieves one Item using its primary key (pk) from the URL
+class FoodDetail(DetailView):
+    model = Item
+    template_name = "myapp/detail.html"
+    context_object_name = "item"
 
 
 # HTTP response can return html as well
