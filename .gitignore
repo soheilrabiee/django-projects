@@ -21,3 +21,6 @@ local_settings.py
 # IDE folders
 .vscode/
 .idea/
+
+# Media files
+pictures/
