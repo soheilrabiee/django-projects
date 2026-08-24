@@ -1,6 +1,7 @@
 # from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
@@ -108,3 +109,5 @@ def delete_item(request, id):
 
 class ItemDelete(DeleteView):
     model = Item
+    # The item instance will be deleted so the get_absolute_url method cannot be used to redirect the user
+    success_url = reverse_lazy("myapp:index")
