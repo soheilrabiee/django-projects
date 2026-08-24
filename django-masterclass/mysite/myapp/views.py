@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
 from .forms import ItemForm
 from .models import Item
@@ -41,10 +42,11 @@ def detail(request, id):
 
 
 ## Generic detailView retrieves one Item using its primary key (pk) from the URL
-class FoodDetail(DetailView):
-    model = Item
-    template_name = "myapp/detail.html"
-    context_object_name = "item"
+
+# class FoodDetail(DetailView):
+#     model = Item
+#     template_name = "myapp/detail.html"
+#     context_object_name = "item"
 
 
 # HTTP response can return html as well
@@ -69,6 +71,11 @@ def create_item(request):
     # form = ItemForm()
     context = {"form": form}
     return render(request, "myapp/item-form.html", context)
+
+
+class ItemCreateView(CreateView):
+    model = Item
+    fields = ["item_name", "item_desc", "item_price", "item_image"]
 
 
 def update_item(request, id):
