@@ -2,9 +2,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
-from django.views.generic.edit import UpdateView
 
 from .forms import ItemForm
 from .models import Item
@@ -105,3 +104,7 @@ def delete_item(request, id):
         item.delete()
         return redirect("myapp:index")
     return render(request, "myapp/item-delete.html")
+
+
+class ItemDelete(DeleteView):
+    model = Item
