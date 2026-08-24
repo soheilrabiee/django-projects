@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
+from django.views.generic.edit import UpdateView
 
 from .forms import ItemForm
 from .models import Item
@@ -89,6 +90,13 @@ def update_item(request, id):
         form.save()
         return redirect("myapp:index")
     return render(request, "myapp/item-form.html", {"form": form})
+
+
+class ItemUpdateView(UpdateView):
+    model = Item
+    fields = ["item_name", "item_desc", "item_price", "item_image"]
+    # Changes the suffix of the template from "modelname_form.html"
+    template_name_suffix = "_update_form"
 
 
 def delete_item(request, id):
