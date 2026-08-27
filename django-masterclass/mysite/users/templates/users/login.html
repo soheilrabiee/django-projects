@@ -4,6 +4,14 @@
         <h1>Login</h1>
         <form method="post" class="shadow-lg p-10 space-y-10">
             {% csrf_token %}
+            {% comment %} How to display form error in DTL {% endcomment %}
+            {% if form.non_field_errors %}
+                <div class="bg-red-500 text-white p-2">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
             <div>
                 <label for="">Username</label>
                 {% comment %} form.username only puts the input field of the form {% endcomment %}
