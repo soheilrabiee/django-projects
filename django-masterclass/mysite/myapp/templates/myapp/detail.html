@@ -9,11 +9,13 @@
             <div class="text-green-700 font-bold text-2xl">${{ item.item_price }}</div>
             <div>{{ item.item_desc }}</div>
             <div>
-                <a class="bg-yellow-500 px-4 py-2 rounded-md font-bold text-white"
-                   href="{% url "myapp:update_item" item.id %}">Edit</a>
-                {% comment %}Passing the id as an argument alongside the url which comes from the context in the template{% endcomment %}
-                <a class="bg-red-500 px-4 py-2 rounded-md font-bold text-white"
-                   href="{% url "myapp:delete_item" item.id %}">Delete</a>
+                {% if item.user_name == request.user %}
+                    <a class="bg-yellow-500 px-4 py-2 rounded-md font-bold text-white"
+                       href="{% url "myapp:update_item" item.id %}">Edit</a>
+                    {% comment %}Passing the id as an argument alongside the url which comes from the context in the template{% endcomment %}
+                    <a class="bg-red-500 px-4 py-2 rounded-md font-bold text-white"
+                       href="{% url "myapp:delete_item" item.id %}">Delete</a>
+                {% endif %}
             </div>
         </div>
     </div>
