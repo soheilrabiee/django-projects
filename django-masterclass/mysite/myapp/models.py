@@ -22,3 +22,11 @@ class Item(models.Model):
     item_image = models.CharField(
         max_length=500, default="https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg"
     )
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    added_on = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name
