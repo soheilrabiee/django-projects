@@ -18,10 +18,12 @@ class Item(models.Model):
     user_name = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     item_name = models.CharField(max_length=200)
     item_desc = models.CharField()
-    item_price = models.IntegerField()
-    item_image = models.CharField(
+    item_price = models.DecimalField(max_digits=6, decimal_places=2)
+    item_image = models.URLField(
         max_length=500, default="https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg"
     )
+    is_available = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Category(models.Model):
