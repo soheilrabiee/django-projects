@@ -81,6 +81,14 @@ class ItemCreateView(CreateView):
     model = Item
     fields = ["item_name", "item_desc", "item_price", "item_image"]
 
+    # This method is used to add logic before the form is saved
+    def form_valid(self, form):
+        # Add the user_name to the form data
+        form.instance.user_name = self.request.user
+
+        # Continue with the django form_valid method and return its value
+        return super().form_valid(form)
+
 
 def update_item(request, id):
     item = Item.objects.get(id=id)
