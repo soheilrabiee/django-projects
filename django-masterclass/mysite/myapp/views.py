@@ -106,6 +106,10 @@ class ItemUpdateView(UpdateView):
     # Changes the suffix of the template from "modelname_form.html"
     template_name_suffix = "_update_form"
 
+    # Restricts the queryset to items owned by the currently logged-in user
+    def get_queryset(self):
+        return Item.objects.filter(user_name=self.request.user)
+
 
 def delete_item(request, id):
     item = Item.objects.get(id=id)
