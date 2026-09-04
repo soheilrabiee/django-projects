@@ -1,0 +1,275 @@
+[
+{
+    "model": "myapp.item",
+    "pk": 1,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Pizza",
+        "item_desc": "This is a pizza",
+        "item_price": "20.00",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-27T23:20:31.378Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 2,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Margherita Pizza",
+        "item_desc": "Classic Italian pizza with mozzarella and tomato",
+        "item_price": "8.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.284Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 3,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Cheeseburger",
+        "item_desc": "Beef patty with cheese, lettuce and tomato",
+        "item_price": "6.49",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.354Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 4,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Caesar Salad",
+        "item_desc": "Crisp romaine with parmesan and croutons",
+        "item_price": "5.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.356Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 5,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Chicken Tacos",
+        "item_desc": "Soft tortillas with grilled chicken and salsa",
+        "item_price": "7.29",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.357Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 6,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Sushi Platter",
+        "item_desc": "Assorted rolls with tuna, salmon and avocado",
+        "item_price": "12.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.358Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 7,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Pasta Alfredo",
+        "item_desc": "Creamy white sauce pasta with mushrooms",
+        "item_price": "9.49",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.360Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 8,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Falafel Wrap",
+        "item_desc": "Middle Eastern wrap with chickpea patties",
+        "item_price": "6.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.362Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 9,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Pad Thai",
+        "item_desc": "Thai stir-fried noodles with peanuts and veggies",
+        "item_price": "10.49",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.363Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 10,
+    "fields": {
+        "user_name": 1,
+        "item_name": "French Fries",
+        "item_desc": "Crispy golden potato fries with salt",
+        "item_price": "3.49",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.364Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 11,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Veggie Burger",
+        "item_desc": "Plant-based patty with lettuce and tomato",
+        "item_price": "6.29",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.366Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 12,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Butter Chicken",
+        "item_desc": "Indian-style chicken in creamy tomato sauce",
+        "item_price": "11.49",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.368Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 13,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Ramen Bowl",
+        "item_desc": "Japanese noodle soup with egg and pork",
+        "item_price": "10.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.369Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 14,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Greek Salad",
+        "item_desc": "Feta cheese, olives, cucumber and tomatoes",
+        "item_price": "7.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.371Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 15,
+    "fields": {
+        "user_name": 1,
+        "item_name": "BBQ Ribs",
+        "item_desc": "Slow cooked pork ribs with barbecue sauce",
+        "item_price": "14.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.372Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 16,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Shawarma",
+        "item_desc": "Grilled meat wrap with garlic sauce",
+        "item_price": "8.49",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.373Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 17,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Pancakes",
+        "item_desc": "Stack of fluffy pancakes with maple syrup",
+        "item_price": "5.79",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.375Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 18,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Mutton Biryani",
+        "item_desc": "Fragrant rice with spiced mutton",
+        "item_price": "12.29",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.376Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 19,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Spring Rolls",
+        "item_desc": "Crispy rolls stuffed with vegetables",
+        "item_price": "4.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.377Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 20,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Fish and Chips",
+        "item_desc": "British-style fried fish with fries",
+        "item_price": "9.99",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.380Z"
+    }
+},
+{
+    "model": "myapp.item",
+    "pk": 21,
+    "fields": {
+        "user_name": 1,
+        "item_name": "Ice Cream Sundae",
+        "item_desc": "Vanilla ice cream topped with chocolate sauce",
+        "item_price": "4.59",
+        "item_image": "https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg",
+        "is_available": true,
+        "created_at": "2026-08-28T14:18:45.381Z"
+    }
+}
+]
