@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
+from .managers import ItemManager
+
 
 # Create your models here.
 class Item(models.Model):
@@ -30,6 +32,9 @@ class Item(models.Model):
     )
     is_available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    # Connecting the custom manager to the model
+    objects = ItemManager()
 
 
 class Category(models.Model):
