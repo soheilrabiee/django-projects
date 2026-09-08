@@ -5,6 +5,12 @@ from django.urls import reverse
 
 # Create your models here.
 class Item(models.Model):
+    class Meta:
+        # Create a composite index which includes the user_name and the item_price fields
+        indexes = [
+            models.Index(fields=["user_name", "item_price"]),
+        ]
+
     # How each object which is a table row represents itself in objects.all() method
     def __str__(self):
         return self.item_name + " : " + str(self.item_price)
