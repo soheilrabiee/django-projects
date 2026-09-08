@@ -16,9 +16,9 @@ class Item(models.Model):
     # Both user_name and user_name_id can be used by django. The first on points to the object and the second one to the actual value of the database for that field
     # db_column can be used to change this behavior by specifying the name for the database
     user_name = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    item_name = models.CharField(max_length=200)
+    item_name = models.CharField(max_length=200, db_index=True)
     item_desc = models.CharField()
-    item_price = models.DecimalField(max_digits=6, decimal_places=2)
+    item_price = models.DecimalField(max_digits=6, decimal_places=2, db_index=True)
     item_image = models.URLField(
         max_length=500, default="https://alcaratello.com/wp-content/uploads/2021/03/meal-placeholder.jpg"
     )
