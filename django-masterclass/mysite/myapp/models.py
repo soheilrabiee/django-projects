@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 from .managers import ItemManager
 
@@ -20,6 +21,12 @@ class Item(models.Model):
     def get_absolute_url(self):
         return reverse("myapp:index")
 
+    # Changing the delete method for the item objects to perform the soft deletion
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.deleted_at = timezone.now()
+        self.save()
+
     # Django automatically adds "_id" to the database column of a ForeignKey, while the model field keeps its original name.
     # Both user_name and user_name_id can be used by django. The first on points to the object and the second one to the actual value of the database for that field
     # db_column can be used to change this behavior by specifying the name for the database
@@ -32,6 +39,11 @@ class Item(models.Model):
     )
     is_available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    # Soft delete flag
+    is_deleted = models.BooleanField(default=False)
+    # Saves soft delete timestamp
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
     # Connecting the custom manager to the model
     objects = ItemManager()
