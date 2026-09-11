@@ -1,14 +1,8 @@
 from django.db import models
 
 
-# Custom Item model manager
+# Custom manager for the item model
 class ItemManager(models.Manager):
-    # Adding new methods for the Item model
-    def cheap_items(self):
-        return self.filter(item_price__lt=5)
-
-    def expensive_items(self):
-        return self.filter(item_price__gt=5)
-
-    def search(self, keyword):
-        return self.filter(item_name__icontains=keyword)
+    # Override Django's default queryset to exclude soft-deleted objects
+    def get_queryset(self):
+        return super().get_queryset().filter(is_deleted=False)
