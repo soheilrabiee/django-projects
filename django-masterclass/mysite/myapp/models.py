@@ -47,6 +47,8 @@ class Item(models.Model):
 
     # Connecting the custom manager to the model
     objects = ItemManager()
+    # Accessing the base manager alongside the custom one
+    all_objects = models.Manager()
 
 
 class Category(models.Model):
