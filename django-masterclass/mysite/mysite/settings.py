@@ -49,8 +49,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # Custom middleware
+    # Custom middlewares
     "myapp.middleware.LogRequestMiddleware",
+    "myapp.middleware.TimerMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
