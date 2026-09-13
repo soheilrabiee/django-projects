@@ -1,5 +1,6 @@
 # from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
@@ -11,15 +12,18 @@ from .models import Item
 
 
 # This view can't be used if the user is not logged in
-@login_required
+# @login_required
 def index(request):
     # Model.Manager.Method => how to retrieve data from the database
     item_list = Item.objects.all()
 
-    # Context dict for the render method
-    context = {"item_list": item_list}
+    paginator = Paginator(item_list, 5)
+    # Get the url parameter through the request
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
-    # return HttpResponse(item_list)
+    # Context dict for the render method
+    context = {"page_obj": page_obj}
 
     # Passing the context object to the render method along with the template
     return render(request, "myapp/index.html", context)

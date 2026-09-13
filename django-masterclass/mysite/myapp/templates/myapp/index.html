@@ -1,7 +1,7 @@
 {% extends "myapp/base.html" %}
 {% block body %}
     <div>
-        {% for item in item_list %}
+        {% for item in page_obj %}
             <div class="m-10 flex w-1/2 mx-auto">
                 <div>
                     <img class="w-64 rounded-lg" src="{{ item.item_image }}" alt="" />
