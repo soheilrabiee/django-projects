@@ -157,3 +157,11 @@ LOGIN_URL = "users:login"
 MEDIA_ROOT = os.path.join(BASE_DIR, "pictures")
 # MEDIA_URL: the URL prefix used to access uploaded files in the browser
 MEDIA_URL = "/pictures/"
+
+# Local cache
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": BASE_DIR / "cache",
+    }
+}
