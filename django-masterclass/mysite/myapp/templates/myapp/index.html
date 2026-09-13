@@ -21,13 +21,15 @@
             </div>
         {% endfor %}
     </div>
-    <div>
+    <div class="flex items-center justify-center space-x-4 py-4">
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            <a href="?page={{ page_obj.previous_page_number }}"
+               class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Previous</a>
         {% endif %}
         <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.next_page_number }}"
+               class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Next</a>
         {% endif %}
     </div>
 {% endblock body %}
