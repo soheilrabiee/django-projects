@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_headers
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
@@ -15,7 +16,8 @@ from .models import Item
 # This view can't be used if the user is not logged in
 @login_required
 # Number of seconds that the cache is valid
-## @cache_page(60 * 15)
+@cache_page(60 * 15)
+@vary_on_headers("User-Agent")
 def index(request):
     # Model.Manager.Method => how to retrieve data from the database
     item_list = Item.objects.all()
