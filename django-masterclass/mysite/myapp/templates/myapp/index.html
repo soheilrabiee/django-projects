@@ -1,25 +1,28 @@
 {% extends "myapp/base.html" %}
+{% load cache %}
 {% block body %}
     <div>
-        {% for item in page_obj %}
-            <div class="m-10 flex w-1/2 mx-auto">
-                <div>
-                    <img class="w-64 rounded-lg" src="{{ item.item_image }}" alt="" />
-                </div>
-                <div class="mx-16">
-                    <div class="font-bold">{{ item.item_name }}</div>
-                    <div>{{ item.item_desc }}</div>
-                    <div>{{ item.user_name }}</div>
-                    <div class="text-green-700 font-bold">${{ item.item_price }}</div>
-                </div>
-                <div>
+        {% cache 900 page_obj %}
+            {% for item in page_obj %}
+                <div class="m-10 flex w-1/2 mx-auto">
                     <div>
-                        <a class="bg-red-500 text-white font-bold px-4 py-2 rounded-md"
-                           href=" {% url 'myapp:detail' item.id %} ">View Details</a>
+                        <img class="w-64 rounded-lg" src="{{ item.item_image }}" alt="" />
+                    </div>
+                    <div class="mx-16">
+                        <div class="font-bold">{{ item.item_name }}</div>
+                        <div>{{ item.item_desc }}</div>
+                        <div>{{ item.user_name }}</div>
+                        <div class="text-green-700 font-bold">${{ item.item_price }}</div>
+                    </div>
+                    <div>
+                        <div>
+                            <a class="bg-red-500 text-white font-bold px-4 py-2 rounded-md"
+                               href=" {% url 'myapp:detail' item.id %} ">View Details</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% endcache %}
     </div>
     <div class="flex items-center justify-center space-x-4 py-4">
         {% if page_obj.has_previous %}

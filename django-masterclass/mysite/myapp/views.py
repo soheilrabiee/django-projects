@@ -15,9 +15,9 @@ from .models import Item
 
 # This view can't be used if the user is not logged in
 @login_required
-# Number of seconds that the cache is valid
-@cache_page(60 * 15)
-@vary_on_headers("User-Agent")
+## Number of seconds that the cache is valid
+# @cache_page(60 * 15)
+# @vary_on_headers("User-Agent")
 def index(request):
     # Model.Manager.Method => how to retrieve data from the database
     item_list = Item.objects.all()
