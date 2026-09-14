@@ -11,3 +11,10 @@ class ItemForm(forms.ModelForm):
         model = Item
         # Which fields of the model should be included or excluded
         fields = ["item_name", "item_desc", "item_price", "item_image"]
+        # Add placeholder and set required field for the form
+        widgets = {
+            "item_name": forms.TextInput(attrs={"placeholder": "e.g Margherita Pizza", "required": True}),
+            "item_desc": forms.TextInput(attrs={"placeholder": "e.g Fresh and cheesy", "required": True}),
+            "item_price": forms.NumberInput(attrs={"placeholder": "100", "required": True}),
+            "item_image": forms.URLInput(attrs={"required": False}),
+        }
