@@ -27,3 +27,13 @@ class ItemForm(forms.ModelForm):
         if price < 0:
             raise forms.ValidationError("Price cannot be negative")
         return price
+
+    # Form level validation
+    def clean(self):
+        # Performs Django's normal form cleaning and returns cleaned results
+        cleaned_data = super().clean()
+        name = cleaned_data.get("item_name")
+        desc = cleaned_data.get("item_desc")
+        if name and desc and name.lower() in desc.lower():
+            self.add_error("item_desc", "Description should add new info beyond the name")
+        return cleaned_data
