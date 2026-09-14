@@ -18,3 +18,12 @@ class ItemForm(forms.ModelForm):
             "item_price": forms.NumberInput(attrs={"placeholder": "100", "required": True}),
             "item_image": forms.URLInput(attrs={"required": False}),
         }
+
+    # Add methods to the class to validate field values
+    # Should be named as clean_[field name]
+    def clean_item_price(self):
+        # Gets cleaned form data
+        price = self.cleaned_data["item_price"]
+        if price < 0:
+            raise forms.ValidationError("Price cannot be negative")
+        return price
