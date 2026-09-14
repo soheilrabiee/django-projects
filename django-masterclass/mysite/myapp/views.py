@@ -1,4 +1,6 @@
 # from django.http import HttpResponse
+import logging
+
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
@@ -12,6 +14,9 @@ from django.views.generic.list import ListView
 from .forms import ItemForm
 from .models import Item
 
+# Shows the module in which the logger has created the logs
+logger = logging.getLogger(__name__)
+
 
 # This view can't be used if the user is not logged in
 @login_required
@@ -20,7 +25,10 @@ from .models import Item
 # @vary_on_headers("User-Agent")
 def index(request):
     # Model.Manager.Method => how to retrieve data from the database
+    logger.info("Fetching all items from the database")
     item_list = Item.objects.all()
+    # Better to use placeholders rather than f-strings for messages
+    logger.debug("Found %s items", item_list.count())
 
     paginator = Paginator(item_list, 5)
     # Get the url parameter through the request
@@ -43,7 +51,16 @@ def index(request):
 
 
 def detail(request, id):
-    item = Item.objects.get(id=id)
+    logger.info("Fetching an item with id: %s", id)
+
+    # Log the exception with its traceback and re-raise it for higher-level handling
+    try:
+        item = Item.objects.get(id=id)
+        logger.debug("Item found %s ($%s)", item.item_name, item.item_price)
+    except Exception:
+        logger.exception("Error fetching the item with id %s", id)
+        raise
+
     context = {"item": item}
 
     # return HttpResponse(f"This is a detail view for id number {item}")
