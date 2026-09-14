@@ -15,6 +15,7 @@
                     <div>{{ item.user_name }}</div>
                     <div>Added {{ item.created_at | timesince }} ago</div>
                     <div class="text-green-700 font-bold">{{ item.item_price | currency }}</div>
+                    <div>Discounted price: {{ item.item_price | discount:10 }}</div>
                 </div>
                 <div>
                     <div>
