@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
 from django.views.generic.detail import DetailView
@@ -24,9 +25,18 @@ logger = logging.getLogger(__name__)
 # @cache_page(60 * 15)
 # @vary_on_headers("User-Agent")
 def index(request):
-    # Model.Manager.Method => how to retrieve data from the database
     logger.info("Fetching all items from the database")
+    # Log time, user and ip address of the request
+    logger.info(
+        "User %s [%s] requested item list from %s",
+        request.user,
+        timezone.now().isoformat(),
+        request.META.get("REMOTE_ADDR"),
+    )
+
+    # Model.Manager.Method => how to retrieve data from the database
     item_list = Item.objects.all()
+
     # Better to use placeholders rather than f-strings for messages
     logger.debug("Found %s items", item_list.count())
 
@@ -53,14 +63,17 @@ def index(request):
 def detail(request, id):
     logger.info("Fetching an item with id: %s", id)
 
-    # Log the exception with its traceback and re-raise it for higher-level handling
-    try:
-        item = get_object_or_404(Item, pk=id)
-        # item = Item.objects.get(id=id)
-        logger.debug("Item found %s ($%s)", item.item_name, item.item_price)
-    except Exception as e:
-        logger.error("Error fetching the item with id %s : %s", id, e)
-        raise
+    # Use get_object_or_404 to handle the object not found for the detail view
+    item = get_object_or_404(Item, pk=id)
+    logger.debug("Item found %s ($%s)", item.item_name, item.item_price)
+
+    ## Log the exception with its traceback and re-raise it for higher-level handling
+    # try:
+    #     item = Item.objects.get(id=id)
+    #     logger.debug("Item found %s ($%s)", item.item_name, item.item_price)
+    # except Exception:
+    #     logger.exception("Error fetching the item with id %s : %s", id)
+    #     raise
 
     context = {"item": item}
 
