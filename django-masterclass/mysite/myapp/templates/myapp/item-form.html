@@ -2,6 +2,8 @@
 {% block body %}
     <div class="flex flex-col justify-center items-center min-h-screen p-10">
         <h1>Add Item</h1>
+        {% comment %} Displaying field level validation errors {% endcomment %}
+        {{ form.errors }}
         <form method="post" class="shadow-lg space-y-6 p-10 w-96">
             {% csrf_token %}
             {% if form.non_field_errors %}

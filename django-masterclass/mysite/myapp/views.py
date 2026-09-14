@@ -105,7 +105,6 @@ def create_item(request):
             # Save the content to the database
             form.save()
             return redirect("myapp:index")
-        print("Post request is triggered!")
 
     ## Views are automatically programmed to handle GET requests so it doesn't need a condition for it
     ## Create an instance of the form class
