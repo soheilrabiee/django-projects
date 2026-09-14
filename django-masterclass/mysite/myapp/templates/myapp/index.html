@@ -1,5 +1,6 @@
 {% extends "myapp/base.html" %}
 {% comment %} {% load cache %} {% endcomment %}
+{% load custom_filters %}
 {% block body %}
     <div>
         {% comment %} {% cache 900 page_obj %} {% endcomment %}
@@ -13,7 +14,7 @@
                     <div>{{ item.item_desc | lower | truncatechars:30 }}</div>
                     <div>{{ item.user_name }}</div>
                     <div>Added {{ item.created_at | timesince }} ago</div>
-                    <div class="text-green-700 font-bold">${{ item.item_price | add:50 | floatformat:2 }}</div>
+                    <div class="text-green-700 font-bold">{{ item.item_price | currency }}</div>
                 </div>
                 <div>
                     <div>
