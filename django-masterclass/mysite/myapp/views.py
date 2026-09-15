@@ -3,6 +3,7 @@ import logging
 
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils import timezone
@@ -17,6 +18,13 @@ from .models import Item
 
 # Shows the module in which the logger has created the logs
 logger = logging.getLogger(__name__)
+
+
+# Python simple API function
+def item_list_json(request):
+    items = Item.objects.all().values("id", "item_name", "item_desc", "item_price")
+    # Return JSON for the API
+    return JsonResponse(data=list(items), safe=False)
 
 
 # This view can't be used if the user is not logged in
