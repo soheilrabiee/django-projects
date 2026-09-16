@@ -73,6 +73,15 @@ class ItemDetailAPIView(APIView):
         serializer = ItemSerializer(item)
         return Response(serializer.data)
 
+    def put(self, request, pk):
+        item = self.get_object(pk)
+        if not item:
+            return Response({"Error": "Item not found"})
+        serializer = ItemSerializer(item, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
 
 @api_view(["GET", "PUT", "DELETE"])
 def item_detail_api(request, pk):
