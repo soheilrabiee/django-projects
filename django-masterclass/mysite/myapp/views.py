@@ -24,17 +24,27 @@ logger = logging.getLogger(__name__)
 
 
 # Allow this view to handle GET requests
-@api_view(["GET"])
+@api_view(["GET", "POST"])
 def item_list_api(request):
-    items = Item.objects.all()
-    # Serialize multiple Item objects
-    serializer = ItemSerializer(items, many=True)
-    # Return the serialized data as an API response
-    return Response(serializer.data)
+
+    if request.method == "GET":
+        items = Item.objects.all()
+        # Serialize multiple Item objects
+        serializer = ItemSerializer(items, many=True)
+        # Return the serialized data as an API response
+        return Response(serializer.data)
+
+    elif request.method == "POST":
+        # The exact opposite steps of the GET request
+        serializer = ItemSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
 
 
 @api_view(["GET"])
 def item_detail_api(request, pk):
+
     item = Item.objects.get(pk=pk)
     serializer = ItemSerializer(item)
     return Response(serializer.data)
