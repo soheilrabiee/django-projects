@@ -36,6 +36,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Add DRF to registered apps
+    "rest_framework",
     # Links to the my app config class
     # Necessary to make migrations
     "myapp.apps.MyappConfig",
