@@ -14,6 +14,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .forms import ItemForm
 from .models import Item
@@ -21,6 +22,13 @@ from .serializers import ItemSerializer
 
 # Shows the module in which the logger has created the logs
 logger = logging.getLogger(__name__)
+
+
+class ItemListAPIView(APIView):
+    def get(self, request):
+        items = Item.objects.all()
+        serializer = ItemSerializer(items, many=True)
+        return Response(serializer.data)
 
 
 # Allow this view to handle GET requests
