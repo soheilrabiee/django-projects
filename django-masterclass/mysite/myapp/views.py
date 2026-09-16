@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 @api_view(["GET", "POST"])
 def item_list_api(request):
 
+    # Read functionality
     if request.method == "GET":
         items = Item.objects.all()
         # Serialize multiple Item objects
@@ -34,6 +35,7 @@ def item_list_api(request):
         # Return the serialized data as an API response
         return Response(serializer.data)
 
+    # Create functionality
     elif request.method == "POST":
         # The exact opposite steps of the GET request
         serializer = ItemSerializer(data=request.data)
@@ -42,12 +44,21 @@ def item_list_api(request):
             return Response(serializer.data)
 
 
-@api_view(["GET"])
+@api_view(["GET", "PUT"])
 def item_detail_api(request, pk):
-
     item = Item.objects.get(pk=pk)
-    serializer = ItemSerializer(item)
-    return Response(serializer.data)
+
+    # Read functionality
+    if request.method == "GET":
+        serializer = ItemSerializer(item)
+        return Response(serializer.data)
+
+    # Update functionality
+    elif request.method == "PUT":
+        serializer = ItemSerializer(item, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
 
 
 # Python simple API function
