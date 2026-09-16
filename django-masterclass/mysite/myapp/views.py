@@ -66,13 +66,6 @@ def item_detail_api(request, pk):
         return Response({"message": "Item deleted"})
 
 
-# Python simple API function
-def item_list_json(request):
-    items = Item.objects.all().values("id", "item_name", "item_desc", "item_price")
-    # Return JSON for the API
-    return JsonResponse(data=list(items), safe=False)
-
-
 # This view can't be used if the user is not logged in
 @login_required
 ## Number of seconds that the cache is valid
