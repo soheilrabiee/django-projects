@@ -82,6 +82,13 @@ class ItemDetailAPIView(APIView):
             serializer.save()
             return Response(serializer.data)
 
+    def delete(self, request, pk):
+        item = self.get_object(pk)
+        if not item:
+            return Response({"Error": "Item not found"})
+        item.delete()
+        return Response({"message": "Item deleted"})
+
 
 @api_view(["GET", "PUT", "DELETE"])
 def item_detail_api(request, pk):
