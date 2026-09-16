@@ -30,6 +30,12 @@ class ItemListAPIView(APIView):
         serializer = ItemSerializer(items, many=True)
         return Response(serializer.data)
 
+    def post(self, request):
+        serializer = ItemSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
 
 # Allow this view to handle GET requests
 @api_view(["GET", "POST"])
