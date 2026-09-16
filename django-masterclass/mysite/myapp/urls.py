@@ -12,6 +12,8 @@ app_name = "myapp"
 urlpatterns = [
     # URL patterns of API
     path("items-json/", views.item_list_json, name="item_list_json"),
+    # URL patterns of API built with DRF
+    path("items-api/", views.item_list_api, name="item_list_api"),
     #
     # URL patterns of django app
     ## URL level caching which is the same as view caching

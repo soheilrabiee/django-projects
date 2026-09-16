@@ -12,12 +12,25 @@ from django.views.decorators.vary import vary_on_headers
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .forms import ItemForm
 from .models import Item
+from .serializers import ItemSerializers
 
 # Shows the module in which the logger has created the logs
 logger = logging.getLogger(__name__)
+
+
+# Allow this view to handle GET requests
+@api_view(["GET"])
+def item_list_api(request):
+    items = Item.objects.all()
+    # Serialize multiple Item objects
+    serializer = ItemSerializers(items, many=True)
+    # Return the serialized data as an API response
+    return Response(serializer.data)
 
 
 # Python simple API function
