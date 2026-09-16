@@ -17,7 +17,7 @@ from rest_framework.response import Response
 
 from .forms import ItemForm
 from .models import Item
-from .serializers import ItemSerializers
+from .serializers import ItemSerializer
 
 # Shows the module in which the logger has created the logs
 logger = logging.getLogger(__name__)
@@ -28,8 +28,15 @@ logger = logging.getLogger(__name__)
 def item_list_api(request):
     items = Item.objects.all()
     # Serialize multiple Item objects
-    serializer = ItemSerializers(items, many=True)
+    serializer = ItemSerializer(items, many=True)
     # Return the serialized data as an API response
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
+def item_detail_api(request, pk):
+    item = Item.objects.get(pk=pk)
+    serializer = ItemSerializer(item)
     return Response(serializer.data)
 
 
