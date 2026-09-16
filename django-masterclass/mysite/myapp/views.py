@@ -44,7 +44,7 @@ def item_list_api(request):
             return Response(serializer.data)
 
 
-@api_view(["GET", "PUT"])
+@api_view(["GET", "PUT", "DELETE"])
 def item_detail_api(request, pk):
     item = Item.objects.get(pk=pk)
 
@@ -59,6 +59,11 @@ def item_detail_api(request, pk):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+
+    # Delete functionality
+    elif request.method == "DELETE":
+        item.delete()
+        return Response({"message": "Item deleted"})
 
 
 # Python simple API function
