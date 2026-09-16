@@ -38,24 +38,24 @@ class ItemListAPIView(APIView):
 
 
 # Allow this view to handle GET requests
-@api_view(["GET", "POST"])
-def item_list_api(request):
+# @api_view(["GET", "POST"])
+# def item_list_api(request):
 
-    # Read functionality
-    if request.method == "GET":
-        items = Item.objects.all()
-        # Serialize multiple Item objects
-        serializer = ItemSerializer(items, many=True)
-        # Return the serialized data as an API response
-        return Response(serializer.data)
+#     # Read functionality
+#     if request.method == "GET":
+#         items = Item.objects.all()
+#         # Serialize multiple Item objects
+#         serializer = ItemSerializer(items, many=True)
+#         # Return the serialized data as an API response
+#         return Response(serializer.data)
 
-    # Create functionality
-    elif request.method == "POST":
-        # The exact opposite steps of the GET request
-        serializer = ItemSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+#     # Create functionality
+#     elif request.method == "POST":
+#         # The exact opposite steps of the GET request
+#         serializer = ItemSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
 
 
 class ItemDetailAPIView(APIView):
@@ -90,26 +90,26 @@ class ItemDetailAPIView(APIView):
         return Response({"message": "Item deleted"})
 
 
-@api_view(["GET", "PUT", "DELETE"])
-def item_detail_api(request, pk):
-    item = Item.objects.get(pk=pk)
+# @api_view(["GET", "PUT", "DELETE"])
+# def item_detail_api(request, pk):
+#     item = Item.objects.get(pk=pk)
 
-    # Read functionality
-    if request.method == "GET":
-        serializer = ItemSerializer(item)
-        return Response(serializer.data)
+#     # Read functionality
+#     if request.method == "GET":
+#         serializer = ItemSerializer(item)
+#         return Response(serializer.data)
 
-    # Update functionality
-    elif request.method == "PUT":
-        serializer = ItemSerializer(item, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+#     # Update functionality
+#     elif request.method == "PUT":
+#         serializer = ItemSerializer(item, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
 
-    # Delete functionality
-    elif request.method == "DELETE":
-        item.delete()
-        return Response({"message": "Item deleted"})
+#     # Delete functionality
+#     elif request.method == "DELETE":
+#         item.delete()
+#         return Response({"message": "Item deleted"})
 
 
 # This view can't be used if the user is not logged in
