@@ -58,6 +58,22 @@ def item_list_api(request):
             return Response(serializer.data)
 
 
+class ItemDetailAPIView(APIView):
+    # Custom method to get a specific item
+    def get_object(self, pk):
+        try:
+            return Item.objects.get(pk=pk)
+        except Item.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        item = self.get_object(pk)
+        if not item:
+            return Response({"Error": "Item not found"})
+        serializer = ItemSerializer(item)
+        return Response(serializer.data)
+
+
 @api_view(["GET", "PUT", "DELETE"])
 def item_detail_api(request, pk):
     item = Item.objects.get(pk=pk)
