@@ -31,6 +31,13 @@ class ItemListCreateAPI(generics.ListCreateAPIView):
     serializer_class = ItemSerializer
 
 
+# Generic View for Retrieve/update/delete item details
+class ItemRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    # Base queryset. DRF uses the URL's pk to retrieve the specific object
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+
+
 # # Class based view without using generics
 # class ItemListAPIView(APIView):
 #     def get(self, request):
@@ -66,36 +73,37 @@ class ItemListCreateAPI(generics.ListCreateAPIView):
 #             return Response(serializer.data)
 
 
-class ItemDetailAPIView(APIView):
-    # Custom method to get a specific item
-    def get_object(self, pk):
-        try:
-            return Item.objects.get(pk=pk)
-        except Item.DoesNotExist:
-            return None
+# # Class based view without using generics
+# class ItemDetailAPIView(APIView):
+#     # Custom method to get a specific item
+#     def get_object(self, pk):
+#         try:
+#             return Item.objects.get(pk=pk)
+#         except Item.DoesNotExist:
+#             return None
 
-    def get(self, request, pk):
-        item = self.get_object(pk)
-        if not item:
-            return Response({"Error": "Item not found"})
-        serializer = ItemSerializer(item)
-        return Response(serializer.data)
+#     def get(self, request, pk):
+#         item = self.get_object(pk)
+#         if not item:
+#             return Response({"Error": "Item not found"})
+#         serializer = ItemSerializer(item)
+#         return Response(serializer.data)
 
-    def put(self, request, pk):
-        item = self.get_object(pk)
-        if not item:
-            return Response({"Error": "Item not found"})
-        serializer = ItemSerializer(item, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+#     def put(self, request, pk):
+#         item = self.get_object(pk)
+#         if not item:
+#             return Response({"Error": "Item not found"})
+#         serializer = ItemSerializer(item, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
 
-    def delete(self, request, pk):
-        item = self.get_object(pk)
-        if not item:
-            return Response({"Error": "Item not found"})
-        item.delete()
-        return Response({"message": "Item deleted"})
+#     def delete(self, request, pk):
+#         item = self.get_object(pk)
+#         if not item:
+#             return Response({"Error": "Item not found"})
+#         item.delete()
+#         return Response({"message": "Item deleted"})
 
 
 # @api_view(["GET", "PUT", "DELETE"])
