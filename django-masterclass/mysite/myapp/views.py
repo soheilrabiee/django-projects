@@ -12,6 +12,7 @@ from django.views.decorators.vary import vary_on_headers
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -24,20 +25,27 @@ from .serializers import ItemSerializer
 logger = logging.getLogger(__name__)
 
 
-class ItemListAPIView(APIView):
-    def get(self, request):
-        items = Item.objects.all()
-        serializer = ItemSerializer(items, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        serializer = ItemSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+# Generic View for list/create items
+class ItemListCreateAPI(generics.ListCreateAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
 
 
-# Allow this view to handle GET requests
+# # Class based view without using generics
+# class ItemListAPIView(APIView):
+#     def get(self, request):
+#         items = Item.objects.all()
+#         serializer = ItemSerializer(items, many=True)
+#         return Response(serializer.data)
+
+#     def post(self, request):
+#         serializer = ItemSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+
+
+## Allow this view to handle GET requests
 # @api_view(["GET", "POST"])
 # def item_list_api(request):
 

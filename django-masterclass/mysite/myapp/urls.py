@@ -11,7 +11,7 @@ app_name = "myapp"
 
 urlpatterns = [
     # URL patterns of API built with DRF
-    path("api/items/", views.ItemListAPIView.as_view(), name="item_list_api"),
+    path("api/items/", views.ItemListCreateAPI.as_view(), name="item_list_api"),
     # URL pattern for single item
     path("api/items/<int:pk>", views.ItemDetailAPIView.as_view(), name="item_detail_api"),
     #
