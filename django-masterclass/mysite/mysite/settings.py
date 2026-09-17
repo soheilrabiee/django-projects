@@ -38,6 +38,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Add DRF to registered apps
     "rest_framework",
+    # Token Authentication setting, run migrate after adding it
+    "rest_framework.authtoken",
     # Links to the my app config class
     # Necessary to make migrations
     "myapp.apps.MyappConfig",
@@ -191,7 +193,7 @@ LOGGING = {
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
 }
