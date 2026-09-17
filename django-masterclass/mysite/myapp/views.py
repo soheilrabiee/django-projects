@@ -12,7 +12,7 @@ from django.views.decorators.vary import vary_on_headers
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -25,17 +25,23 @@ from .serializers import ItemSerializer
 logger = logging.getLogger(__name__)
 
 
-# Generic View for list/create items
-class ItemListCreateAPI(generics.ListCreateAPIView):
+# Viewset handles the whole CRUD operations with actions
+class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 
 
-# Generic View for Retrieve/update/delete item details
-class ItemRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    # Base queryset. DRF uses the URL's pk to retrieve the specific object
-    queryset = Item.objects.all()
-    serializer_class = ItemSerializer
+# # Generic View for list/create items
+# class ItemListCreateAPI(generics.ListCreateAPIView):
+#     queryset = Item.objects.all()
+#     serializer_class = ItemSerializer
+
+
+# # Generic View for Retrieve/update/delete item details
+# class ItemRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+#     # Base queryset. DRF uses the URL's pk to retrieve the specific object
+#     queryset = Item.objects.all()
+#     serializer_class = ItemSerializer
 
 
 # # Class based view without using generics

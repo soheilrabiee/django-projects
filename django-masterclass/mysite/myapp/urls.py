@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import include, path
 from django.views.decorators.cache import cache_page
+from rest_framework.routers import DefaultRouter
 
 from . import views
 
@@ -9,11 +10,18 @@ from . import views
 app_name = "myapp"
 
 
+router = DefaultRouter()
+# Basename is used for url names and is useful when using functions like reverse to generate a url
+router.register(r"items", views.ItemViewSet, basename="item")
+
 urlpatterns = [
-    # URL patterns of API built with DRF
-    path("api/items/", views.ItemListCreateAPI.as_view(), name="item_list_api"),
-    # URL pattern for single item
-    path("api/items/<int:pk>", views.ItemRetrieveUpdateDestroyAPIView.as_view(), name="item_detail_api"),
+    # Creates the whole CRUD operation routes
+    path("api/", include(router.urls)),
+    #
+    # # URL patterns of API built with DRF
+    # path("api/items/", views.ItemListCreateAPI.as_view(), name="item_list_api"),
+    # # URL pattern for single item
+    # path("api/items/<int:pk>", views.ItemRetrieveUpdateDestroyAPIView.as_view(), name="item_detail_api"),
     #
     # URL patterns of django app
     ## URL level caching which is the same as view caching
