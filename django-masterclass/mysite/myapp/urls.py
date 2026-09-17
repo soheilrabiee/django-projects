@@ -1,6 +1,7 @@
 from django.urls import include, path
 from django.views.decorators.cache import cache_page
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from . import views
 
@@ -15,6 +16,10 @@ router = DefaultRouter()
 router.register(r"items", views.ItemViewSet, basename="item")
 
 urlpatterns = [
+    # JWT token url patterns
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh", TokenRefreshView.as_view(), name="token_refresh"),
+    #
     # Creates the whole CRUD operation routes
     path("api/", include(router.urls)),
     #
