@@ -20,6 +20,7 @@ from rest_framework.views import APIView
 
 from .forms import ItemForm
 from .models import Item
+from .permissions import IsOwnerOrReadOnly
 from .serializers import ItemSerializer
 
 # Shows the module in which the logger has created the logs
@@ -30,7 +31,7 @@ logger = logging.getLogger(__name__)
 class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
 
 
 # # Generic View for list/create items
