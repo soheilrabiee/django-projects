@@ -26,3 +26,9 @@ class ItemSerializer(serializers.ModelSerializer):
         if value < 0:
             raise serializers.ValidationError("Price must be greater than zero!")
         return value
+
+    # Object level validation
+    def validate(self, data):
+        if data["item_name"].lower() == data["item_desc"].lower():
+            raise serializers.ValidationError("Item name and description cannot be the same!")
+        return data
