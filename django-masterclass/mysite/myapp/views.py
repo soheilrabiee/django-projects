@@ -33,6 +33,10 @@ class ItemViewSet(viewsets.ModelViewSet):
     serializer_class = ItemSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
+    # Saves the user inside the user_name field whenever we want to create an item
+    def perform_create(self, serializer):
+        return serializer.save(user_name=self.request.user)
+
 
 # # Generic View for list/create items
 # class ItemListCreateAPI(generics.ListCreateAPIView):
