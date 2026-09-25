@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "rest_framework",
     # Filter API
     "django_filters",
+    # API documentation
+    "drf_spectacular",
     # Token Authentication setting, run migrate after adding it
     "rest_framework.authtoken",
     # Links to the my app config class
@@ -192,8 +194,17 @@ LOGGING = {
     },
 }
 
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Your Project API",
+    "DESCRIPTION": "Your project description",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    # OTHER SETTINGS
+}
 
 REST_FRAMEWORK = {
+    # API documentation
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     # Global Throttling config
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.AnonRateThrottle",
