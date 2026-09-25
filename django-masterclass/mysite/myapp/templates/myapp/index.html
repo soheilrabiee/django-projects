@@ -7,7 +7,8 @@
         {% for item in page_obj %}
             <div class="m-10 flex w-1/2 mx-auto">
                 <div>
-                    <img class="w-64 rounded-lg" src="{{ item.item_image }}" alt="" />
+                    {% comment %} .url is needed for the image value if it is an image field and not a URL one {% endcomment %}
+                    <img class="w-64 rounded-lg" src="{{ item.item_image.url }}" alt="" />
                 </div>
                 <div class="mx-16">
                     <div class="font-bold">{{ item.item_name | upper }}</div>
