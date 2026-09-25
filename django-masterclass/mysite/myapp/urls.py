@@ -14,6 +14,7 @@ app_name = "myapp"
 router = DefaultRouter()
 # Basename is used for url names and is useful when using functions like reverse to generate a url
 router.register(r"items", views.ItemViewSet, basename="item")
+router.register(r"orders", views.OrderViewSet, basename="order")
 
 urlpatterns = [
     # JWT token url patterns

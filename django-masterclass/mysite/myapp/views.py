@@ -18,16 +18,21 @@ from rest_framework.decorators import api_view
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
+from rest_framework.views import APIView
 
 from .forms import ItemForm
-from .models import Item
+from .models import Item, Order
 from .permissions import IsOwnerOrReadOnly
-from .serializers import ItemSerializer
+from .serializers import ItemSerializer, OrderSerializer
 
 # Shows the module in which the logger has created the logs
 logger = logging.getLogger(__name__)
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
 
 
 # Viewset handles the whole CRUD operations with actions
