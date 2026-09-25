@@ -19,6 +19,7 @@ from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 
 from .forms import ItemForm
 from .models import Item
@@ -38,6 +39,8 @@ class ItemViewSet(viewsets.ModelViewSet):
     # filterset_fields = ["item_name", "item_price"]
     # ordering_fields = ["item_name", "item_price"]
     search_fields = ["item_name", "item_desc"]
+    # Implement throttling on a certain viewset
+    throttle_classes = [AnonRateThrottle, UserRateThrottle]
 
     # Saves the user inside the user_name field whenever we want to create an item
     def perform_create(self, serializer):
