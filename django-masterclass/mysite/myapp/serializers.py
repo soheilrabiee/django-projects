@@ -20,3 +20,9 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         # Fields exposed by the API
         fields = ["id", "user_name", "item_name", "item_desc", "item_price", "item_image"]
+
+    # validate_<field_name> to name the method and perform field level validation
+    def validate_item_price(self, value):
+        if value < 0:
+            raise serializers.ValidationError("Price must be greater than zero!")
+        return value
